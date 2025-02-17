@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="Style.css">
+    
+</head>
+<body>
+    <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="contact-left-tittle">
+                <h2>Quick Review.</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="99aace66-5b8a-45fb-b5ed-39aa1d64e6cb">
+            <input type="text" name="name" placeholder="Your Name" class="contact-inputs" required>
+            <input type="name" name="name"  placeholder="Your email" class="contact-inputs" required>
+
+            <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+            <!-- <label class="rev"><h2>Rate your experience:</h2></label>
+            <div class="emoji-rating">
+                <span class="emoji" data-key="1" onclick="selectEmoji(this, 'Dissatisfied')">😡</span>
+                <span class="emoji" data-key="2" onclick="selectEmoji(this, 'Satisfied')">☹️</span>
+                <span class="emoji" data-key="3" onclick="selectEmoji(this, 'Spicy')">😐</span>
+                <span class="emoji" data-key="4" onclick="selectEmoji(this, 'Yummy')">😊</span>
+                <span class="emoji" data-key="5" onclick="selectEmoji(this, 'So Tasty.')">😍</span>
+            </div>
+            <input type="hidden" id="rating" name="rating">
+            <div id="expression"></div> -->
+            <div class="rating-container">
+                <h2>Rate Your Food:-</h2>
+                <div class="emojis">
+                    <label>
+                        <input type="checkbox" name="rating" value="2" >
+                        <span class="emoji">😡</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="4" >
+                        <span class="emoji">😞</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="6" >
+                        <span class="emoji">😐</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="8" >
+                        <span class="emoji">😊</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="10" >
+                        <span class="emoji">😍</span>
+                    </label>
+                </div>
+                <p id="rating-result"></p>
+            </div>
+        
+            <button type="submit" >Submit <img src="images/arrow_icon.png" alt=""></button>
+        <div class="contact-right">
+            <img src="images/right_img.png" alt="">
+        </div>
+    </div>
+    <!-- <script>
+        function selectEmoji(element, expression) {
+            document.querySelectorAll('.emoji').forEach(emoji => {
+                emoji.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            document.getElementById('rating').value = element.innerText;
+            document.getElementById('expression').innerText = expression;
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key >= '1' && event.key <= '5') {
+                const emoji = document.querySelector(`.emoji[data-key='${event.key}']`);
+                if (emoji) {
+                    const expressions = {
+                        '1': 'Dissatisfied',
+                        '2': 'Satisfied',
+                        '3': 'Spicy',
+                        '4': 'Yummy',
+                        '5': 'So Tasty'
+                    };
+                    selectEmoji(emoji, expressions[event.key]);
+                }
+            }
+        });
+        
+       
+    </script> -->
+   
+    <script>
+        document.querySelectorAll('input[name="rating"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                document.querySelectorAll('input[name="rating"]').forEach(cb => {
+                    if (cb !== this) cb.checked = false;
+                });
+                document.getElementById("rating-result").textContent = `You rated: ${this.value}/10`;
+            });
+        });
+    </script>
+</body>
+</html>
